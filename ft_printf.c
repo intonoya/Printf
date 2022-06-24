@@ -6,7 +6,7 @@
 /*   By: intonoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 15:54:33 by intonoya          #+#    #+#             */
-/*   Updated: 2022/06/23 20:46:21 by intonoya         ###   ########.fr       */
+/*   Updated: 2022/06/24 17:20:00 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@ int	ft_f(va_list ar, const char f)
 {
 	int	print_length;
 
-	i = 0;
+	print_length = 0;
 	if (f == 'c')
 		print_length += ft_putchr_fd(va_arg(ar, int));
 	else if (f == 's')
-		print_length += ft_putstr_fd(va_arg(ar, char *)); 
+		print_length += ft_putstr_fd(va_arg(ar, char *));
 	else if (f == 'p')
 		print_length += ft_printptr(va_arg(ar, unsigned long long));
 	else if (f == 'd' || f == 'i')
-		print_length += ft_printnbr(va_arg(ar, int )); 
+		print_length += ft_printnbr(va_arg(ar, int ));
 	else if (f == 'u')
 		print_length += ft_printunsigned(va_arg(ar, unsigned int));
 	else if (f == 'x' || f == 'X')
-		print_length += ft_
+		print_length += ft_printhex(va_arg(ar, unsigned int), f);
 	else if (f == '%')
 		print_length += ft_printpercent();
-	return (prl);	
+	return (print_length);
 }	
 
 int	ft_printf(const char *format, ...)
@@ -51,7 +51,7 @@ int	ft_printf(const char *format, ...)
 			i++;
 		}
 		else
-			j += ft_printch(a[i]);
+			j += ft_putchar_fd(a[i]);
 			i++;
 	}
 	va_end(a);
