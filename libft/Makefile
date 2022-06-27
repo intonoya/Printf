@@ -5,40 +5,45 @@
 #                                                     +:+ +:+         +:+      #
 #    By: intonoya <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/05/14 16:45:51 by intonoya          #+#    #+#              #
-#    Updated: 2022/06/27 17:02:01 by intonoya         ###   ########.fr        #
+#    Created: 2022/04/12 14:09:57 by intonoya          #+#    #+#              #
+#    Updated: 2022/04/19 15:44:41 by intonoya         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	libftprintf.a
+NAME		= libft.a
 
-MAKE	=	make
+CC			= cc
 
-SRCS	=	$(wildcard *.c)
+CFLAGS		= -Wall -Wextra -Werror
 
-HEAD	=	ft_printf.h
+RM			= rm -f
 
-LIBFT	=	libft/libft.a
+SRCS		= $(wildcard *.c)
 
-CC		=	cc
+BONSRCS		= $(wildcard ft_lst*.c)
 
-CFLAGS	=	-Wall -Wextra -Werror
+OBJS		= $(SRCS:.c=.o)
 
-OBJS	=	${SRCS:.c=.o}
+BONOBJS		= $(BONSRCS:.c=.o)
 
-$(NAME)	:	${OBJS} ${LIBFT} ${HEAD}
+%.o:%.c
+			$(CC) $(CFLAGS) -c $< -o $@
+
+all:		$(NAME)
+
+$(NAME):	$(OBJS)
+			ar rcs $(NAME) $(OBJS)
+
+bonus:		$(BONOBJS)
+			ar rcs $(NAME) $(BONOBJS)
 			
-$(LIBFT):	make -C ./libft
-	
-all		:	${NAME}
+clean:
+			$(RM) $(OBJS)
+			$(RM) $(BONOBJS)
 
-clean	:
-			make clean -C libft
-			@rm -rf ${OBJS}
+fclean:		clean
+			$(RM) $(NAME)
 
-fclean	:		clean
-				@rm -rf ${NAME}
+re:			fclean all
 
-re	:	fclean all
-
-.PHONY.	:	all clean fclean re
+.PHONY:		all bonus clean fclean re

@@ -6,11 +6,17 @@
 /*   By: intonoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 15:54:33 by intonoya          #+#    #+#             */
-/*   Updated: 2022/06/24 17:20:00 by intonoya         ###   ########.fr       */
+/*   Updated: 2022/06/27 19:07:18 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_printchar(int c)
+{
+	write (1, &c, 1);
+	return (1);
+}	
 
 int	ft_f(va_list ar, const char f)
 {
@@ -18,9 +24,9 @@ int	ft_f(va_list ar, const char f)
 
 	print_length = 0;
 	if (f == 'c')
-		print_length += ft_putchr_fd(va_arg(ar, int));
+		print_length += ft_printchar(va_arg(ar, int));
 	else if (f == 's')
-		print_length += ft_putstr_fd(va_arg(ar, char *));
+		print_length += ft_printstr(va_arg(ar, char *));
 	else if (f == 'p')
 		print_length += ft_printptr(va_arg(ar, unsigned long long));
 	else if (f == 'd' || f == 'i')
@@ -51,7 +57,7 @@ int	ft_printf(const char *format, ...)
 			i++;
 		}
 		else
-			j += ft_putchar_fd(a[i]);
+			j += ft_printchar(format[i]);
 			i++;
 	}
 	va_end(a);
