@@ -6,11 +6,12 @@
 /*   By: intonoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:36:31 by intonoya          #+#    #+#             */
-/*   Updated: 2022/06/24 17:54:10 by intonoya         ###   ########.fr       */
+/*   Updated: 2022/07/02 18:59:10 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft/libft.h"
 
 int	ft_hexlen(unsigned int num)
 {

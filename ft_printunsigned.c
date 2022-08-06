@@ -6,15 +6,16 @@
 /*   By: intonoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:36:05 by intonoya          #+#    #+#             */
-/*   Updated: 2022/06/24 17:36:09 by intonoya         ###   ########.fr       */
+/*   Updated: 2022/07/02 18:59:43 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft/libft.h"
 
-int	ft_numlen(int num)
+int	ft_numlen(unsigned int num)
 {
-	unsigned int	len;
+	int	len;
 
 	len = 0;
 	while (num != 0)
@@ -34,7 +35,7 @@ char	*ft_uitoa(unsigned int n)
 	num = (char *)malloc(sizeof(char) * (len + 1));
 	if (!num)
 		return (0);
-	num[len] != '/0';
+	num[len] = '\0';
 	while (n != 0)
 	{
 		num[len - 1] = n % 10 + 48;

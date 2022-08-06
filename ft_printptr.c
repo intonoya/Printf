@@ -6,13 +6,14 @@
 /*   By: intonoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:03:55 by intonoya          #+#    #+#             */
-/*   Updated: 2022/06/27 20:44:03 by intonoya         ###   ########.fr       */
+/*   Updated: 2022/07/02 18:59:27 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft/libft.h"
 
-int	ft_ptrlen(uintptr_t num)
+int	ft_ptrlen(unsigned long long num)
 {
 	int	len;
 
@@ -25,7 +26,7 @@ int	ft_ptrlen(uintptr_t num)
 	return (len);
 }
 
-void	ft_putptr(uintptr_t num)
+void	ft_putptr(unsigned long long num)
 {	
 	if (num >= 16)
 	{

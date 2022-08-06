@@ -31,7 +31,7 @@ BONOBJS		= $(BONSRCS:.c=.o)
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS)
+$(NAME):	$(OBJS) $(HEAD)
 			ar rcs $(NAME) $(OBJS)
 
 bonus:		$(BONOBJS)
